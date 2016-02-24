@@ -32,6 +32,7 @@
 // from our CommomClasses
 #include "diphoton-analysis/CommonClasses/interface/PhotonID.h"
 #include "diphoton-analysis/CommonClasses/interface/PhotonInfo.h"
+#include "diphoton-analysis/CommonClasses/interface/EventInfo.h"
 
 // for TFileService, trees
 #include "CommonTools/UtilAlgos/interface/TFileService.h"

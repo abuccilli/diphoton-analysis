@@ -64,12 +64,12 @@ namespace ExoDiPhotons
     else if (1.566 < phoEta && phoEta < 2.5) {
       passHadTowerOverEmCut = photon->hadTowOverEm() < 0.05;
       passCHIsoCut = cHIso < 5;
-      passCorPhoIso = corPhoIso(photon,phoIso,rho) < 2.75;
+      passCorPhoIso = corPhoIso(photon,phoIso,rho) < 2.0;
       if (isSaturated) {
 	passSigmaIeIe = sigmaIeIe < 0.03;
       }
       else {
-	passSigmaIeIe = sigmaIeIe < 0.0112;
+	passSigmaIeIe = sigmaIeIe < 0.028;
       }
     } // end EE    
     return passHadTowerOverEmCut && passCHIsoCut && passCorPhoIso && passSigmaIeIe && passCSEV;
