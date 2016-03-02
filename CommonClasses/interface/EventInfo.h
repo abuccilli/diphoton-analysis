@@ -14,14 +14,20 @@ namespace ExoDiPhotons
     int LS;
     int evnum;
     int processid;
+    int bx;
+    int orbit;
+    int interactingParton1PdgId;
+    int interactingParton2PdgId;
   };
 
-  std::string eventInfoBranchDefString("pthat/F:alphaqcd:alphaqed:qscale:weight:run/I:LS:evnum:processid");
+  std::string eventBranchDefString("pthat/F:alphaqcd:alphaqed:qscale:weight:run/I:LS:evnum:processid:interactingParton1PdgId:interactingParton2PdgId");
   
   void FillEventInfo(eventInfo_t &eventInfo, const edm::Event& iEvent) {
-    eventInfo.run = iEvent.id().run();
-    eventInfo.LS = iEvent.id().luminosityBlock();
+    eventInfo.run   = iEvent.id().run();
+    eventInfo.LS    = iEvent.id().luminosityBlock();
     eventInfo.evnum = iEvent.id().event();
+    eventInfo.bx    = iEvent.bunchCrossing();
+    eventInfo.orbit = iEvent.orbitNumber();
   }
   
   void InitEventInfo(eventInfo_t &eventInfo) {
@@ -34,9 +40,11 @@ namespace ExoDiPhotons
     eventInfo.run = (int) -99999.99;
     eventInfo.LS = (int) -99999.99;
     eventInfo.evnum = (int) -99999.99;
+    eventInfo.bx = (int) -99999.99;
+    eventInfo.orbit = (int) -99999.99;
+    eventInfo.interactingParton1PdgId = (int) -99999.99;
+    eventInfo.interactingParton2PdgId = (int) -99999.99;
   }
-  
-  
   
 }
 

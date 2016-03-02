@@ -4,7 +4,7 @@ process = cms.Process("Demo")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
@@ -15,10 +15,19 @@ process.source = cms.Source("PoolSource",
     )
 )
 
+process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
+process.GlobalTag.globaltag = '76X_mcRun2_asymptotic_v12'
+
+process.load("Configuration.StandardSequences.GeometryDB_cff")
+#process.load("Geometry.CMSCommonData.cmsIdealGeometryXML_cfi");
+#process.load("Geometry.CaloEventSetup.CaloGeometry_cfi");
+#process.load("Geometry.CaloEventSetup.CaloTopology_cfi");
+
 process.demo = cms.EDAnalyzer(
 'ExoDiPhotonAnalyzer',
 photonsMiniAOD = cms.InputTag("slimmedPhotons"),
-genParticlesMiniAOD = cms.InputTag("prunedGenParticles")
+genParticlesMiniAOD = cms.InputTag("prunedGenParticles"),
+rho = cms.InputTag("fixedGridRhoFastjetAll")
 )
 
 process.TFileService = cms.Service("TFileService",
